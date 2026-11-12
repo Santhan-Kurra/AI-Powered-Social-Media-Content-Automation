@@ -105,7 +105,8 @@ ai-powered-social-media-automation/
 ## Screenshots
 
 ### Complete Workflow
-![Workflow Overview](screenshots/workflow-overview.png)
+![Workflow Overview](<img width="2940" height="1912" alt="image" src="https://github.com/user-attachments/assets/5046a1ea-8c5d-45c9-bb70-fe0f97aa7260" />
+)
 
 ### LinkedIn Publishing
 ![LinkedIn Publishing](screenshots/linkedin-publishing.png)
