@@ -1,4 +1,4 @@
-{
+ {
   "name": "AI-Powered Social Media Content Automation using n8n and Gemini",
   "nodes": [
     {
@@ -12,17 +12,17 @@
         },
         "documentId": {
           "__rl": true,
-          "value": "1yrTjDjbIVJ3mbRjNugZIUeT4XSsUABEwxdjDPg1byfo",
+          "value": "YOUR_GOOGLE_SHEET_ID",
           "mode": "list",
-          "cachedResultName": "Social-Media-Automation",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1yrTjDjbIVJ3mbRjNugZIUeT4XSsUABEwxdjDPg1byfo/edit?usp=drivesdk"
+          "cachedResultName": "Select your Google Sheet",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit"
         },
         "sheetName": {
           "__rl": true,
-          "value": "gid=0",
+          "value": "YOUR_SHEET_GID",
           "mode": "list",
-          "cachedResultName": "Sheet1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1yrTjDjbIVJ3mbRjNugZIUeT4XSsUABEwxdjDPg1byfo/edit#gid=0"
+          "cachedResultName": "Select your worksheet",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit#gid=YOUR_SHEET_GID"
         },
         "options": {}
       },
@@ -33,13 +33,7 @@
         0
       ],
       "id": "130eb62f-f4c4-45c5-8696-3b617f6c8341",
-      "name": "Google Sheets Trigger",
-      "credentials": {
-        "googleSheetsTriggerOAuth2Api": {
-          "id": "CZXNXV72D425hNk4",
-          "name": "Google Sheets Trigger account 9051"
-        }
-      }
+      "name": "Google Sheets Trigger"
     },
     {
       "parameters": {
@@ -68,13 +62,7 @@
         176
       ],
       "id": "74d3b72c-e111-4ffd-93a6-30051ebd4387",
-      "name": "Google Gemini Chat Model",
-      "credentials": {
-        "googlePalmApi": {
-          "id": "ERHsGtu2qfxLbN00",
-          "name": "Google Gemini(PaLM) Api account 105138"
-        }
-      }
+      "name": "Google Gemini Chat Model"
     },
     {
       "parameters": {
@@ -118,13 +106,7 @@
         32
       ],
       "id": "ddfa7744-2d71-4ea5-aeb1-0fb6bc5f7cfc",
-      "name": "Google Gemini Chat Model1",
-      "credentials": {
-        "googlePalmApi": {
-          "id": "ERHsGtu2qfxLbN00",
-          "name": "Google Gemini(PaLM) Api account 105138"
-        }
-      }
+      "name": "Google Gemini Chat Model1"
     },
     {
       "parameters": {
@@ -138,17 +120,11 @@
         352
       ],
       "id": "7956e35c-13ec-4d6d-a978-1c3b139a89f6",
-      "name": "Google Gemini Chat Model2",
-      "credentials": {
-        "googlePalmApi": {
-          "id": "ERHsGtu2qfxLbN00",
-          "name": "Google Gemini(PaLM) Api account 105138"
-        }
-      }
+      "name": "Google Gemini Chat Model2"
     },
     {
       "parameters": {
-        "person": "MAJZg8NfMZ",
+        "person": "YOUR_LINKEDIN_PERSON_ID",
         "text": "={{ $json.text }}",
         "additionalFields": {}
       },
@@ -159,13 +135,7 @@
         -128
       ],
       "id": "8518ce5e-cd98-4365-b8ae-e73c97cbfa7f",
-      "name": "Create a post",
-      "credentials": {
-        "linkedInOAuth2Api": {
-          "id": "WIULnGKId0s0NpW2",
-          "name": "LinkedIn account 6946"
-        }
-      }
+      "name": "Create a post"
     },
     {
       "parameters": {
@@ -189,7 +159,7 @@
           "parameters": [
             {
               "name": "query",
-              "value": "= \n{{ `mutation CreatePost {\n  createPost(input: {\n    text: ${JSON.stringify($json.text)},\n    channelId: \"6af559e862b70b94b00395f2\",\n    schedulingType: automatic,\n    mode: addToQueue\n  }) {\n    ... on PostActionSuccess {\n      post {\n        id\n        text\n        status\n        dueAt\n      }\n    }\n    ... on MutationError {\n      message\n    }\n  }\n}` }}\n"
+              "value": "= \n{{ `mutation CreatePost {\n  createPost(input: {\n    text: ${JSON.stringify($json.text)},\n    channelId: \"YOUR_BUFFER_CHANNEL_ID\",\n    schedulingType: automatic,\n    mode: addToQueue\n  }) {\n    ... on PostActionSuccess {\n      post {\n        id\n        text\n        status\n        dueAt\n      }\n    }\n    ... on MutationError {\n      message\n    }\n  }\n}` }}\n"
             }
           ]
         },
@@ -290,16 +260,10 @@
       ]
     }
   },
-  "active": true,
+  "active": false,
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "ce3d97f7-ab29-4d9a-a554-9cca0db7ce8d",
-  "meta": {
-    "templateCredsSetupCompleted": true,
-    "instanceId": "969257b09ad2942bbaff2e2288304f4969030574d109cdeca05bf11f630884df"
-  },
-  "id": "xriccnFuZIJZzKqa",
   "tags": []
 }
