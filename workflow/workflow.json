@@ -1,0 +1,305 @@
+{
+  "name": "AI-Powered Social Media Content Automation using n8n and Gemini",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyHour"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "1yrTjDjbIVJ3mbRjNugZIUeT4XSsUABEwxdjDPg1byfo",
+          "mode": "list",
+          "cachedResultName": "Social-Media-Automation",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1yrTjDjbIVJ3mbRjNugZIUeT4XSsUABEwxdjDPg1byfo/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1yrTjDjbIVJ3mbRjNugZIUeT4XSsUABEwxdjDPg1byfo/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "130eb62f-f4c4-45c5-8696-3b617f6c8341",
+      "name": "Google Sheets Trigger",
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "CZXNXV72D425hNk4",
+          "name": "Google Sheets Trigger account 9051"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Summarize this article:  {{ $json.newslinks }}",
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        208,
+        0
+      ],
+      "id": "f1daba3a-e055-466a-a97a-9eb6b1c469f8",
+      "name": "Summarize Articles"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        208,
+        176
+      ],
+      "id": "74d3b72c-e111-4ffd-93a6-30051ebd4387",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "ERHsGtu2qfxLbN00",
+          "name": "Google Gemini(PaLM) Api account 105138"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Draft an X post as an AI industry expert analyzing a key news article. The post should:\n\nDeliver sharp insights on the article's main points\nConnect to current AI trends\nSpark discussion with a thought-provoking question\nBe punchy and engaging\nEnd with a clear call to action\nLength: Within 30 words\n\nFocus: What matters most to the AI community. Make every word count.\nArticle summary: {{ $json.text }}",
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        544,
+        176
+      ],
+      "id": "19384a02-5cd2-408b-93cf-fe08bc9488eb",
+      "name": "Generate X"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Assume the role of an industry expert and draft a LinkedIn post discussing key points from a news article relevant to artificial intelligence. The post should provide insightful analysis, connect with current industry trends, and encourage professional engagement or discussion. Highlight any notable implications for the industry. Since LinkedIn supports detailed posts, ensure it is informative and structured. Include a professional call to action. Here's a summary of the article:  {{ $json.text }}",
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        576,
+        -128
+      ],
+      "id": "3d863e7f-c5f2-4deb-b26c-ad97989043e4",
+      "name": "Generate LinkedIn"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        576,
+        32
+      ],
+      "id": "ddfa7744-2d71-4ea5-aeb1-0fb6bc5f7cfc",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "ERHsGtu2qfxLbN00",
+          "name": "Google Gemini(PaLM) Api account 105138"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        544,
+        352
+      ],
+      "id": "7956e35c-13ec-4d6d-a978-1c3b139a89f6",
+      "name": "Google Gemini Chat Model2",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "ERHsGtu2qfxLbN00",
+          "name": "Google Gemini(PaLM) Api account 105138"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "person": "MAJZg8NfMZ",
+        "text": "={{ $json.text }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.linkedIn",
+      "typeVersion": 1,
+      "position": [
+        928,
+        -128
+      ],
+      "id": "8518ce5e-cd98-4365-b8ae-e73c97cbfa7f",
+      "name": "Create a post",
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "WIULnGKId0s0NpW2",
+          "name": "LinkedIn account 6946"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.buffer.com",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer YOUR_BUFFER_API_KEY"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "query",
+              "value": "= \n{{ `mutation CreatePost {\n  createPost(input: {\n    text: ${JSON.stringify($json.text)},\n    channelId: \"6af559e862b70b94b00395f2\",\n    schedulingType: automatic,\n    mode: addToQueue\n  }) {\n    ... on PostActionSuccess {\n      post {\n        id\n        text\n        status\n        dueAt\n      }\n    }\n    ... on MutationError {\n      message\n    }\n  }\n}` }}\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        880,
+        176
+      ],
+      "id": "9b122d7d-90b7-417a-af64-87908d7ac531",
+      "name": "Publish X Post via Buffer"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Google Sheets Trigger": {
+      "main": [
+        [
+          {
+            "node": "Summarize Articles",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Summarize Articles",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize Articles": {
+      "main": [
+        [
+          {
+            "node": "Generate LinkedIn",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Generate X",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Generate LinkedIn",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Generate X",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate LinkedIn": {
+      "main": [
+        [
+          {
+            "node": "Create a post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate X": {
+      "main": [
+        [
+          {
+            "node": "Publish X Post via Buffer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "ce3d97f7-ab29-4d9a-a554-9cca0db7ce8d",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "969257b09ad2942bbaff2e2288304f4969030574d109cdeca05bf11f630884df"
+  },
+  "id": "xriccnFuZIJZzKqa",
+  "tags": []
+}
