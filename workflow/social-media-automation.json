@@ -14,15 +14,15 @@
           "__rl": true,
           "value": "YOUR_GOOGLE_SHEET_ID",
           "mode": "list",
-          "cachedResultName": "Select your Google Sheet",
+          "cachedResultName": "YOUR_SPREADSHEET_NAME",
           "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit"
         },
         "sheetName": {
           "__rl": true,
-          "value": "YOUR_SHEET_GID",
+          "value": "gid=0",
           "mode": "list",
-          "cachedResultName": "Select your worksheet",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit#gid=YOUR_SHEET_GID"
+          "cachedResultName": "YOUR_SHEET_NAME",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit#gid=0"
         },
         "options": {}
       },
@@ -32,7 +32,7 @@
         0,
         0
       ],
-      "id": "130eb62f-f4c4-45c5-8696-3b617f6c8341",
+      "id": "1fc42086-902f-4406-bbb5-34848784d5dc",
       "name": "Google Sheets Trigger"
     },
     {
@@ -47,7 +47,7 @@
         208,
         0
       ],
-      "id": "f1daba3a-e055-466a-a97a-9eb6b1c469f8",
+      "id": "b317a696-907a-42bf-9893-fa7f00c35814",
       "name": "Summarize Articles"
     },
     {
@@ -61,7 +61,7 @@
         208,
         176
       ],
-      "id": "74d3b72c-e111-4ffd-93a6-30051ebd4387",
+      "id": "0f1739bb-68a5-4efc-b2ce-3433302c4a30",
       "name": "Google Gemini Chat Model"
     },
     {
@@ -76,7 +76,7 @@
         544,
         176
       ],
-      "id": "19384a02-5cd2-408b-93cf-fe08bc9488eb",
+      "id": "c76c82a2-a45c-4c52-8895-197e0653f8e3",
       "name": "Generate X"
     },
     {
@@ -91,7 +91,7 @@
         576,
         -128
       ],
-      "id": "3d863e7f-c5f2-4deb-b26c-ad97989043e4",
+      "id": "de789352-6648-445f-85e7-78f9e05e650f",
       "name": "Generate LinkedIn"
     },
     {
@@ -105,7 +105,7 @@
         576,
         32
       ],
-      "id": "ddfa7744-2d71-4ea5-aeb1-0fb6bc5f7cfc",
+      "id": "b6b24a61-dbb5-4cb4-b31b-62f157cb691f",
       "name": "Google Gemini Chat Model1"
     },
     {
@@ -119,7 +119,7 @@
         544,
         352
       ],
-      "id": "7956e35c-13ec-4d6d-a978-1c3b139a89f6",
+      "id": "05985c78-d383-4b68-a126-80b1b9ed5552",
       "name": "Google Gemini Chat Model2"
     },
     {
@@ -134,7 +134,7 @@
         928,
         -128
       ],
-      "id": "8518ce5e-cd98-4365-b8ae-e73c97cbfa7f",
+      "id": "7ed691bb-1fa3-4bfd-9e93-1f12689df471",
       "name": "Create a post"
     },
     {
@@ -159,7 +159,7 @@
           "parameters": [
             {
               "name": "query",
-              "value": "= \n{{ `mutation CreatePost {\n  createPost(input: {\n    text: ${JSON.stringify($json.text)},\n    channelId: \"YOUR_BUFFER_CHANNEL_ID\",\n    schedulingType: automatic,\n    mode: addToQueue\n  }) {\n    ... on PostActionSuccess {\n      post {\n        id\n        text\n        status\n        dueAt\n      }\n    }\n    ... on MutationError {\n      message\n    }\n  }\n}` }}\n"
+              "value": "=\n{{ `mutation CreatePost {\n  createPost(input: {\n    text: ${JSON.stringify($json.text)},\n    channelId: \"YOUR_BUFFER_CHANNEL_ID\",\n    schedulingType: automatic,\n    mode: addToQueue\n  }) {\n    ... on PostActionSuccess {\n      post {\n        id\n        text\n        status\n        dueAt\n      }\n    }\n    ... on MutationError {\n      message\n    }\n  }\n}` }}\n"
             }
           ]
         },
@@ -171,7 +171,7 @@
         880,
         176
       ],
-      "id": "9b122d7d-90b7-417a-af64-87908d7ac531",
+      "id": "f2bb303f-40e3-4fd5-b94b-9880738ea900",
       "name": "Publish X Post via Buffer"
     }
   ],
