@@ -104,15 +104,17 @@ ai-powered-social-media-automation/
 
 ## Screenshots
 
-### Complete Workflow
-![Workflow Overview](<img width="2940" height="1912" alt="image" src="https://github.com/user-attachments/assets/5046a1ea-8c5d-45c9-bb70-fe0f97aa7260" />
-)
+## Workflow Overview
 
-### LinkedIn Publishing
-![LinkedIn Publishing](screenshots/linkedin-publishing.png)
+![Workflow Overview](screenshots/workflow-overview.jpeg)
 
-### X Post Scheduling through Buffer
-![Buffer X Scheduling](screenshots/x-buffer-scheduling.png)
+## LinkedIn Publishing
+
+![LinkedIn Publishing](screenshots/linkedin-publishing.jpeg)
+
+## X Publishing through Buffer
+
+![X Publishing](screenshots/x-buffer-scheduling.jpeg)
 
 ## Security
 
