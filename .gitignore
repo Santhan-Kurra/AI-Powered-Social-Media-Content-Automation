@@ -1,0 +1,21 @@
+# macOS system files
+.DS_Store
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Credentials and secrets
+credentials.json
+secrets.json
+*.pem
+*.key
+
+# Editor files
+.vscode/
+.idea/
+
+# Temporary files
+*.log
+*.tmp
